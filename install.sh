@@ -24,4 +24,21 @@ sudo service influxdb restart
 #create smarthome deamon
 # to /etc/rc.local add systemctl start smarthome
 # to /etc/systemd/system add smarthome.service
+#[Service]
+#WorkingDirectory=/home/pi/gowork/src/github.com/oskarszura/smarthome
+#ExecStart=/home/pi/gowork/src/github.com/oskarszura/smarthome/smarthome
+#Restart=always
+#StandardOutput=syslog
+#StandardError=syslog
+#User=root
+#Group=root
+#Environment=PORT=3222
+#Environment=EMAILNAME=
+#Environment=EMAILPASS=
+#Environment=INFLUXADDR=http://localhost:8086
+#Environment=SMTPPORT=smtp
+#Environment=SMTPAUTHURL=smpt
+#[Install]
+sudo systemctl daemon-reload
+
 
