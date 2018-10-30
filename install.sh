@@ -3,6 +3,10 @@ wget https://storage.googleapis.com/golang/go1.9.linux-armv6l.tar.gz
 sudo tar -C /usr/local -xzf go1.9.linux-armv6l.tar.gz
 rm go1.9.linux-armv6l.tar.gz
 
+#install mongodb
+sudo apt-get install mongodb-server
+sudo service mongod start
+
 # add to ~/.profile
 export PATH=$PATH:/usr/local/go/bin
 export GOROOT=/usr/local/go
