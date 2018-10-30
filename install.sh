@@ -36,8 +36,8 @@ sudo service influxdb restart
 #Environment=EMAILNAME=
 #Environment=EMAILPASS=
 #Environment=INFLUXADDR=http://localhost:8086
-#Environment=SMTPPORT=smtp
-#Environment=SMTPAUTHURL=smpt
+#Environment=SMTPPORT=smtp.gmail.com:587
+#Environment=SMTPAUTHURL=smtp.gmail.com
 #[Install]
 sudo systemctl daemon-reload
 
