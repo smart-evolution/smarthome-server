@@ -15,7 +15,13 @@ export PATH=$PATH:$GOPATH/bin
 export GOPATH=$HOME/gowork
 export PATH=$PATH:$GOPATH/bin
 export PORT=3222
+export EMAILNAME=
+export EMAILPASS=
+export SMTPPORT=smtp.gmail.com:587
+export SMTPAUTHURL=smtp.gmail.com
 export INFLUXADDR=http://localhost:8086
+export MONGOLAB_URI=mongodb://localhost:27017
+export DB_NAME=smarthome
 
 #install influxdb
 curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
@@ -42,6 +48,8 @@ sudo service influxdb restart
 #Environment=INFLUXADDR=http://localhost:8086
 #Environment=SMTPPORT=smtp.gmail.com:587
 #Environment=SMTPAUTHURL=smtp.gmail.com
+Environment=MONGOLAB_URI=mongodb://localhost:27017
+Environment=DB_NAME=smarthome
 #[Install]
 sudo systemctl daemon-reload
 
