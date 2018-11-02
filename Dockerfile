@@ -1,5 +1,9 @@
 FROM resin/rpi-raspbian
 
+# Setup files required to run smarthome properly
+ADD ./.profile ~/
+ADD ./smarthome.service /etc/systemd/system/
+
 # Install generictools
 RUN apt-get update
 RUN apt-get install -y wget
@@ -20,6 +24,8 @@ RUN sudo apt install apt-transport-https
 RUN echo "deb https://repos.influxdata.com/debian jessie stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
 RUN sudo apt-get install influxdb
 CMD sudo service influxdb restart
+
+CMD sudo systemctl daemon-reload
 
 # How to run image as a container > sudo docker run -i -t 052ca4f6a38c /bin/bash
 # Running docker contaienrs > sudo docker ps
