@@ -7,6 +7,7 @@ ADD ./smarthome.service /etc/systemd/system/
 # Install generictools
 RUN apt-get update
 RUN apt-get install -y wget
+RUN apt-get install vim
 
 # Install golang
 RUN wget https://storage.googleapis.com/golang/go1.9.linux-armv6l.tar.gz
