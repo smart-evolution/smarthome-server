@@ -1,0 +1,14 @@
+export PATH=$PATH:/usr/local/go/bin
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin
+export PATH=$PATH:$GOPATH/bin
+export GOPATH=$HOME/gowork
+export PATH=$PATH:$GOPATH/bin
+export PORT=3222
+export INFLUXADDR=http://localhost:8086
+export EMAILNAME=
+export EMAILPASS=
+export SMTPPORT=smtp.gmail.com:587
+export SMTPAUTHURL=smtp.gmail.com
+export MONGOLAB_URI=mongodb://localhost:27017
+export DB_NAME=smarthome
