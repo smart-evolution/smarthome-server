@@ -1,6 +1,6 @@
 [Service]
-WorkingDirectory=/home/pi/gowork/src/github.com/oskarszura/smarthome
-ExecStart=/home/pi/gowork/src/github.com/oskarszura/smarthome/smarthome
+WorkingDirectory=/home/pi/gowork/src/github.com/smart-evolution/smarthome
+ExecStart=/home/pi/gowork/src/github.com/smart-evolution/smarthome/smarthome
 Restart=always
 StandardOutput=syslog
 StandardError=syslog
