@@ -1,3 +1,7 @@
+.PHONY: all
+all:
+	docker build --tag smarthome-server .
+
 .PHONY: version
 version:
 	git tag $(V)
