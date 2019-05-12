@@ -5,9 +5,9 @@ ADD ./.profile ~/
 ADD ./smarthome.service /etc/systemd/system/
 
 # Install generictools
-RUN apt-get update
-RUN apt-get install -y wget
-RUN apt-get install vim
+RUN apt-get update && apt-get upgrade && apt-get install -y \
+wget \
+vim
 
 # Install golang
 RUN wget https://storage.googleapis.com/golang/go1.9.linux-armv6l.tar.gz
@@ -20,12 +20,12 @@ RUN sudo apt-get install mongodb-server
 CMD sudo service mongod start
 
 # Install influxdb
-RUN curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
-RUN sudo apt install apt-transport-https
-RUN echo "deb https://repos.influxdata.com/debian jessie stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
-RUN sudo apt-get install influxdb
-CMD sudo service influxdb restart
+RUN curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add - && \
+apt install apt-transport-https && \
+echo "deb https://repos.influxdata.com/debian jessie stable" | sudo tee /etc/apt/sources.list.d/influxdb.list && \
+apt install influxdb
 
+CMD sudo service influxdb restart
 CMD sudo systemctl daemon-reload
 
 # How to run image as a container > sudo docker run -i -t 052ca4f6a38c /bin/bash
