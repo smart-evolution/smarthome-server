@@ -20,10 +20,17 @@ RUN sudo apt-get install mongodb-server
 CMD sudo service mongod start
 
 # Install influxdb
+#RUN curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add - && \
+#apt update && \
+#apt install apt-transport-https && \
+#echo "deb https://repos.influxdata.com/debian stretch stable" | sudo tee /etc/apt/sources.list.d/influxdb.list && \
+#apt install influxdb
+
 RUN curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add - && \
-apt install apt-transport-https && \
-echo "deb https://repos.influxdata.com/debian jessie stable" | sudo tee /etc/apt/sources.list.d/influxdb.list && \
-apt install influxdb
+sudo apt install apt-transport-https && \
+echo "deb https://repos.influxdata.com/debian stretch stable" | sudo tee /etc/apt/sources.list.d/influxdb.list && \
+sudo apt update && \
+sudo apt install influxdb  
 
 CMD sudo service influxdb restart
 CMD sudo systemctl daemon-reload
