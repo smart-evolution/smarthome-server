@@ -46,7 +46,4 @@ apt install influxdb
 RUN mkdir -p ~/go/src/github.com/smart-evolution && \
 git clone https://github.com/smart-evolution/smarthome ~/go/src/github.com/smart-evolution/smarthome 
 
-#ENTRYPOINT sudo service influxdb restart && \
-#sudo systemctl daemon-reload
-
-ENTRYPOINT sudo service mongod start
+ENTRYPOINT mongod
