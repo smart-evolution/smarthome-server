@@ -43,12 +43,15 @@ apt update && \
 apt install influxdb  
 
 # Install code sources
-RUN mkdir -p ~/go/src/github.com/smart-evolution && \
+RUN mkdir -p /root/go/src/github.com/smart-evolution && \
 git clone https://github.com/smart-evolution/smarthome ~/go/src/github.com/smart-evolution/smarthome 
+
+# Install dependencies
+RUN make -C /root/go/src/github.com/smart-evolution/smarthome install
 
 # Add mocks
 RUN mkdir /root/mocks && \
-mkdir /root/scripts && \
+mkdir /root/scripts
 COPY ./mocks/mongoMock.js /root/mocks/
 COPY ./start_services.sh /root/scripts/
 COPY ./mock_data.sh /root/scripts/
