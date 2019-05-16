@@ -2,6 +2,10 @@
 all:
 	docker build --tag smarthome-server .
 
+.PHONY: run
+run:
+	docker run -i -t -p 3222:3222 smarthome-server /bin/bash
+
 .PHONY: version
 version:
 	git tag $(V)
