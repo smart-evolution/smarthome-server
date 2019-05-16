@@ -1,7 +1,7 @@
 FROM resin/rpi-raspbian
 
 # Setup files required to run smarthome properly 
-COPY ./smarthome.service /etc/systemd/system/ && \
+COPY ./smarthome.service /etc/systemd/system/
 
 # Install generictools
 RUN apt-get update && apt-get upgrade && apt-get install -y \
@@ -47,9 +47,9 @@ RUN mkdir -p ~/go/src/github.com/smart-evolution && \
 git clone https://github.com/smart-evolution/smarthome ~/go/src/github.com/smart-evolution/smarthome 
 
 # Add mocks
-RUN mkdir ~/mocks
-COPY mocks/mongoMocks.js ~/mocks
-
-ENTRYPOINT mongod && \
-mongo < ~/mocks/mongoMock.js
+RUN mkdir /root/mocks && \
+mkdir /root/scripts && \
+COPY ./mocks/mongoMock.js /root/mocks/
+COPY ./start_services.sh /root/scripts/
+COPY ./mock_data.sh /root/scripts/
 
