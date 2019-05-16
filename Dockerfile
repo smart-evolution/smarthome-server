@@ -11,16 +11,14 @@ vim \
 git \
 build-essential 
 
-RUN apt-get install --assume-yes git
-
 RUN curl -o node-v9.9.0-linux-armv6l.tar.gz https://nodejs.org/dist/v9.9.0/node-v9.9.0-linux-armv6l.tar.gz && \
 tar -xzf node-v9.9.0-linux-armv6l.tar.gz && \
 sudo cp -r node-v9.9.0-linux-armv6l/* /usr/local/
 
 # Install golang
-RUN wget https://storage.googleapis.com/golang/go1.9.linux-armv6l.tar.gz
-RUN sudo tar -C /usr/local -xzf go1.9.linux-armv6l.tar.gz
-RUN rm go1.9.linux-armv6l.tar.gz
+RUN wget https://storage.googleapis.com/golang/go1.9.linux-armv6l.tar.gz && \
+sudo tar -C /usr/local -xzf go1.9.linux-armv6l.tar.gz && \
+rm go1.9.linux-armv6l.tar.gz
 ENV PATH="${PATH}:/usr/local/go/bin"
 
 # Set env variables
@@ -34,8 +32,8 @@ MONGOLAB_URI=mongodb://localhost:27017 \
 DB_NAME=smarthome
 
 # Install mongodb
-RUN sudo apt-get install mongodb-server
-CMD sudo service mongod start
+RUN sudo apt-get install mongodb-server && \
+mkdir -p /data/db
 
 # Install influxdb
 RUN curl -sL https://repos.influxdata.com/influxdb.key | apt-key add - && \
@@ -44,9 +42,11 @@ echo "deb https://repos.influxdata.com/debian stretch stable" | tee /etc/apt/sou
 apt update && \
 apt install influxdb  
 
+# Install code sources
 RUN mkdir -p ~/go/src/github.com/smart-evolution && \
 git clone https://github.com/smart-evolution/smarthome ~/go/src/github.com/smart-evolution/smarthome 
 
 #ENTRYPOINT sudo service influxdb restart && \
 #sudo systemctl daemon-reload
 
+ENTRYPOINT sudo service mongod start
