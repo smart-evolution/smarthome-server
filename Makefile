@@ -1,10 +1,10 @@
 .PHONY: all
 all:
-	docker build --tag smarthome-server .
+	docker build --tag oszura/smarthome-server .
 
 .PHONY: run
 run:
-	docker run -i -t -p 3222:3222 -v $(GOPATH)/src/github.com/smart-evolution/smarthome:/root/go/src/github.com/smart-evolution/smarthome smarthome-server /bin/bash
+	docker run -i -t -p 3222:3222 -v $(GOPATH)/src/github.com/smart-evolution/smarthome:/root/go/src/github.com/smart-evolution/smarthome oszura/smarthome-server /bin/bash
 
 .PHONY: version
 version:
