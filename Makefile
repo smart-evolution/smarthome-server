@@ -1,5 +1,9 @@
 .PHONY: all
 all:
+	docker build --no-cache --tag oszura/smarthome-server .
+
+.PHONY: soft-build
+soft-build:
 	docker build --tag oszura/smarthome-server .
 
 .PHONY: run
