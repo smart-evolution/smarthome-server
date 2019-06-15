@@ -1,8 +1,5 @@
 FROM resin/rpi-raspbian
 
-# Setup files required to run smarthome properly 
-COPY ./smarthome.service /etc/systemd/system/
-
 # Install generictools
 RUN apt-get update && apt-get upgrade && apt-get install -y \
 wget \
@@ -42,12 +39,10 @@ echo "deb https://repos.influxdata.com/debian stretch stable" | tee /etc/apt/sou
 apt update && \
 apt install influxdb  
 
-# Install code sources
+# Install smarthome project
 RUN mkdir -p /root/go/src/github.com/smart-evolution && \
-git clone https://github.com/smart-evolution/smarthome ~/go/src/github.com/smart-evolution/smarthome 
-
-# Install dependencies
-RUN make -C /root/go/src/github.com/smart-evolution/smarthome install
+git clone https://github.com/smart-evolution/smarthome ~/go/src/github.com/smart-evolution/smarthome && \
+make -C /root/go/src/github.com/smart-evolution/smarthome install
 
 # Add mocks
 RUN mkdir /root/mocks && \
