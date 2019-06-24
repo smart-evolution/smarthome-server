@@ -13,9 +13,9 @@ tar -xzf node-v9.9.0-linux-armv6l.tar.gz && \
 sudo cp -r node-v9.9.0-linux-armv6l/* /usr/local/
 
 # Install golang
-RUN wget https://storage.googleapis.com/golang/go1.9.linux-armv6l.tar.gz && \
-sudo tar -C /usr/local -xzf go1.9.linux-armv6l.tar.gz && \
-rm go1.9.linux-armv6l.tar.gz
+RUN wget https://dl.google.com/go/go1.12.5.linux-armv6l.tar.gz && \
+sudo tar -C /usr/local -xzf go1.12.5.linux-armv6l.tar.gz && \
+rm go1.12.5.linux-armv6l.tar.gz
 ENV PATH="${PATH}:/usr/local/go/bin"
 
 # Set env variables
@@ -40,9 +40,8 @@ apt update && \
 apt install influxdb  
 
 # Install smarthome project
-RUN mkdir -p /root/go/src/github.com/smart-evolution && \
-git clone https://github.com/smart-evolution/smarthome ~/go/src/github.com/smart-evolution/smarthome && \
-make -C /root/go/src/github.com/smart-evolution/smarthome install
+RUN mkdir -p /root/go/src/github.com/smart-evolution/smarthome && \
+git clone https://github.com/smart-evolution/smarthome ~/go/src/github.com/smart-evolution/smarthome
 
 # Add mocks
 RUN mkdir /root/mocks && \
