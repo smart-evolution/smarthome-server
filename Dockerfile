@@ -26,7 +26,8 @@ EMAILPASS= \
 SMTPPORT=smtp.gmail.com:587 \
 SMTPAUTHURL=smtp.gmail.com \
 MONGOLAB_URI=mongodb://localhost:27017 \
-DB_NAME=smarthome
+DB_NAME=smarthome \
+GO111MODULE=on
 
 # Install mongodb
 RUN sudo apt-get install mongodb-server && \
