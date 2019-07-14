@@ -31,7 +31,7 @@ SH_MAILER_SMTP_PORT=smtp.gmail.com:587 \
 SH_MAILER_SMTP_AUTHURL=smtp.gmail.com \
 SH_MONGO_URI=mongodb://localhost:27017 \
 SH_MONGO_DB=smarthome \
-SH_INFLUX_URI=http://localhost:8886
+SH_INFLUX_URI=http://localhost:8086
 
 # Install mongodb
 RUN sudo apt-get install mongodb-server && \
