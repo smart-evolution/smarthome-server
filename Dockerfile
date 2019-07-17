@@ -55,4 +55,7 @@ COPY ./mocks/mongoMock.js /root/mocks/
 COPY ./start_services.sh /root/scripts/
 COPY ./mock_data.sh /root/scripts/
 COPY ./start_smarthome.sh /root/scripts/
+COPY ./entrypoint.sh /root/scripts/
+
+ENTRYPOINT /root/scripts/entrypoint.sh
 
