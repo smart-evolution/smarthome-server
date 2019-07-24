@@ -1,14 +1,20 @@
+ENV ?= dev
+
 .PHONY: all
 all:
-	docker build --no-cache --tag oszura/smarthome-server .
+	docker build --no-cache --tag oszura/smarthome-server-$(ENV) --file=Dockerfile-$(ENV) .
 
-.PHONY: soft-build
-soft-build:
-	docker build --tag oszura/smarthome-server .
+.PHONY: build-soft
+build-soft:
+	docker build --build-arg CACHE_BREAKER=$(date) --tag oszura/smarthome-server-$(ENV) --file=Dockerfile-$(ENV) .
 
-.PHONY: run
-run:
-	docker run -i -t -p 3222:3222 -v $(GOPATH)/src/github.com/smart-evolution/smarthome:/root/go/src/github.com/smart-evolution/smarthome oszura/smarthome-server /bin/bash
+.PHONY: run-dev
+run-dev:
+	docker run -i -t -p 3222:3222 -v $(GOPATH)/src/github.com/smart-evolution/smarthome:/root/go/src/github.com/smart-evolution/smarthome oszura/smarthome-server-dev /bin/bash
+
+.PHONY: run-prod
+run-prod:
+	docker run -it -d -p 3222:3222 oszura/smarthome-server-prod /bin/bash
 
 .PHONY: version
 version:
