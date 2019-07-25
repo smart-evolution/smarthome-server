@@ -10,7 +10,7 @@ build-soft:
 
 .PHONY: run-dev
 run-dev:
-	docker run -i -t -p 3222:3222 -v $(GOPATH)/src/github.com/smart-evolution/smarthome:/root/go/src/github.com/smart-evolution/smarthome oszura/smarthome-server-dev /bin/bash
+	docker run -it -p 3222:3222 -v $(GOPATH)/src/github.com/smart-evolution/smarthome:/root/go/src/github.com/smart-evolution/smarthome oszura/smarthome-server-dev /bin/bash
 
 .PHONY: run-prod
 run-prod:
