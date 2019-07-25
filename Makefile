@@ -6,7 +6,7 @@ all:
 
 .PHONY: build-soft
 build-soft:
-	docker build --build-arg CACHE_BREAKER=$(date) --tag oszura/smarthome-server-$(ENV) --file=Dockerfile-$(ENV) .
+	docker build --tag oszura/smarthome-server-$(ENV) --file=Dockerfile-$(ENV) .
 
 .PHONY: run-dev
 run-dev:

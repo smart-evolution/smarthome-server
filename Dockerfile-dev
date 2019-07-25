@@ -1,7 +1,5 @@
 FROM resin/rpi-raspbian
 
-ARG CACHE_BREAKER
-
 # Install generictools
 RUN apt-get update && apt-get upgrade && apt-get install -y \
 wget \
@@ -48,7 +46,9 @@ apt install influxdb
 
 # Install smarthome project
 RUN mkdir -p /root/go/src/github.com/smart-evolution/smarthome && \
-git clone https://github.com/smart-evolution/smarthome?${CACHE_BREAKER} ~/go/src/github.com/smart-evolution/smarthome
+git clone https://github.com/smart-evolution/smarthome ~/go/src/github.com/smart-evolution/smarthome && \
+cd ~/go/src/github.com/smart-evolution/smarthome && \
+git checkout v1.4.2
 
 # Add mocks
 RUN mkdir /root/mocks && \
