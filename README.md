@@ -1,11 +1,8 @@
 # smarthome-server
 
-Commands:
-- How to run image as a container > sudo docker run -i -t 052ca4f6a38c /bin/bash
-- Running docker contaienrs > sudo docker ps
-- List docker images > sudo docker images
-- Start docker image > sudo docker start hello
-- build image: sudo docker build --tag hello .
-- check images: sudo docker images
-- sudo docker run -i -t <image> /bin/bash
+The repository holds two Docker images of smarthome server for development and production purposes.
 
+## Technical summary
+* The curren image is based on Raspbian GNU/Linux 9 (stretch)
+* Development image holds all necessary services and tools for development
+* Production image holds only necessary services, binaries and assets required
