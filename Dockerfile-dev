@@ -58,6 +58,3 @@ COPY ./start_services.sh /root/scripts/
 COPY ./mock_data.sh /root/scripts/
 COPY ./start_smarthome.sh /root/scripts/
 COPY ./entrypoint-dev.sh /root/scripts/
-
-ENTRYPOINT /root/scripts/entrypoint-dev.sh
-
