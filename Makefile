@@ -14,7 +14,7 @@ run-dev:
 
 .PHONY: run-prod
 run-prod:
-	docker run -it -d -p 3222:3222 oszura/smarthome-server-prod /bin/bash
+	docker run -it -d -p 3222:3222 -v /var/lib/influxdb-backup:/var/lib/influxdb oszura/smarthome-server-prod /bin/bash
 
 .PHONY: version
 version:
