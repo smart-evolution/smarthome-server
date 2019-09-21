@@ -8,6 +8,7 @@ vim \
 git \
 build-essential 
 
+# Install nodejs
 RUN curl -o node-v9.9.0-linux-armv6l.tar.gz https://nodejs.org/dist/v9.9.0/node-v9.9.0-linux-armv6l.tar.gz && \
 tar -xzf node-v9.9.0-linux-armv6l.tar.gz && \
 sudo cp -r node-v9.9.0-linux-armv6l/* /usr/local/
@@ -32,29 +33,3 @@ SH_MAILER_SMTP_AUTHURL=smtp.gmail.com \
 SH_MONGO_URI=mongodb://localhost:27017 \
 SH_MONGO_DB=smarthome \
 SH_INFLUX_URI=http://localhost:8086
-
-# Install mongodb
-RUN sudo apt-get install mongodb-server && \
-mkdir -p /data/db
-
-# Install influxdb
-RUN curl -sL https://repos.influxdata.com/influxdb.key | apt-key add - && \
-apt install apt-transport-https && \
-echo "deb https://repos.influxdata.com/debian stretch stable" | tee /etc/apt/sources.list.d/influxdb.list && \
-apt update && \
-apt install influxdb  
-
-# Install smarthome project
-RUN mkdir -p /root/go/src/github.com/smart-evolution/smarthome && \
-git clone https://github.com/smart-evolution/smarthome ~/go/src/github.com/smart-evolution/smarthome && \
-cd ~/go/src/github.com/smart-evolution/smarthome && \
-git checkout v1.4.2
-
-# Add mocks
-RUN mkdir /root/mocks && \
-mkdir /root/scripts
-COPY ./mocks/mongoMock.js /root/mocks/
-COPY ./start_services.sh /root/scripts/
-COPY ./mock_data.sh /root/scripts/
-COPY ./start_smarthome.sh /root/scripts/
-COPY ./entrypoint-dev.sh /root/scripts/

@@ -1,0 +1,12 @@
+FROM resin/rpi-raspbian
+
+# Install generictools
+RUN apt-get update && apt-get upgrade && apt-get install -y \
+wget \
+python \
+vim \
+git \
+build-essential 
+
+# Set env variables
+SH_INFLUX_URI=http://localhost:8086
