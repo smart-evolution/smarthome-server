@@ -11,3 +11,8 @@ build-essential
 # Install mongodb
 RUN sudo apt-get install mongodb-server && \
 mkdir -p /data/db
+
+RUN mkdir /root/scripts
+COPY ./entrypoint-mongodb.sh /root/scripts
+
+ENTRYPOINT /root/scripts/entrypoint-mongodb.sh
