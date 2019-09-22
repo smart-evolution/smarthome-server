@@ -1,0 +1,20 @@
+version: "3"
+services:
+  sh-dashboard:
+    image: sh-dashboard
+    port: "3222:3222"
+    depends_on:
+    - influxdb
+    - mongodb
+    links:
+    - influxdb
+    - mongodb  
+  influxdb:
+    image sh-influxdb
+    expose: 
+    - "8086"
+  mongodb:
+    image: sh-mongodb
+    expose: 
+    - "27017"
+

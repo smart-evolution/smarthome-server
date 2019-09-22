@@ -8,10 +8,6 @@ vim \
 git \
 build-essential 
 
-# Set env variables
-SH_MONGO_URI=mongodb://localhost:27017 \
-SH_MONGO_DB=smarthome \
-
 # Install mongodb
 RUN sudo apt-get install mongodb-server && \
 mkdir -p /data/db

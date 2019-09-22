@@ -1,0 +1,12 @@
+version: '3'
+services:
+  influxdb:
+    build:
+      context: .
+      dockerfile: Dockerfile-influxdb
+  mongodb:
+      context: .
+      dockerfile: Dockerfile-mongodb
+  sh-dashboard:
+      context .
+      dockerfile: Dockerfile-sh-dashboard  
