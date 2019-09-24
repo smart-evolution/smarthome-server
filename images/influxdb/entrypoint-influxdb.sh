@@ -14,8 +14,6 @@ create_sh_db() {
   echo "Influxdb is running"
 
   curl "http://localhost:8086/query" --data-urlencode "q=CREATE DATABASE smarthome"
-
- 
 }
 
 main
