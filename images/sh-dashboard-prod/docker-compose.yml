@@ -8,9 +8,6 @@ services:
     depends_on:
       - influxdb
       - mongodb
-    links:
-      - influxdb
-      - mongodb  
   influxdb:
     image: oszura/sh-influxdb
     ports: 
