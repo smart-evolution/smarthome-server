@@ -1,21 +1,3 @@
-ENV ?= dev
-
-.PHONY: all
-all:
-	docker build --no-cache --tag oszura/smarthome-server-$(ENV) --file=Dockerfile-$(ENV) .
-
-.PHONY: build-soft
-build-soft:
-	docker build --tag oszura/smarthome-server-$(ENV) --file=Dockerfile-$(ENV) .
-
-.PHONY: run-dev
-run-dev:
-	docker run -it -p 3222:3222 -v $(GOPATH)/src/github.com/smart-evolution/smarthome:/root/go/src/github.com/smart-evolution/smarthome oszura/smarthome-server-dev /bin/bash
-
-.PHONY: run-prod
-run-prod:
-	docker run -it -d -p 3222:3222 -v /data/db-backup:/data/db -v /var/lib/influxdb-backup:/var/lib/influxdb oszura/smarthome-server-prod /bin/bash
-
 .PHONY: version
 version:
 	git tag $(V)
