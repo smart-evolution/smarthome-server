@@ -18,17 +18,6 @@ SH_MONGO_URI=mongodb://localhost:27017 \
 SH_MONGO_DB=smarthome \
 SH_INFLUX_URI=http://localhost:8086
 
-# Install mongodb
-RUN sudo apt-get install mongodb-server && \
-mkdir -p /data/db
-
-# Install influxdb
-RUN curl -sL https://repos.influxdata.com/influxdb.key | apt-key add - && \
-apt install apt-transport-https && \
-echo "deb https://repos.influxdata.com/debian stretch stable" | tee /etc/apt/sources.list.d/influxdb.list && \
-apt update && \
-apt install influxdb  
-
 # Install smarthome project
 RUN mkdir -p /root/go/src/github.com/smart-evolution/smarthome/public
 
@@ -45,4 +34,5 @@ COPY ./start_smarthome.sh /root/scripts/
 COPY ./entrypoint-prod.sh /root/scripts/
 
 ENTRYPOINT /root/scripts/entrypoint-prod.sh
+
 
