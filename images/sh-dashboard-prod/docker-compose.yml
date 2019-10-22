@@ -16,4 +16,3 @@ services:
     image: oszura/sh-mongodb
     ports: 
       - "27017:27017"
-
